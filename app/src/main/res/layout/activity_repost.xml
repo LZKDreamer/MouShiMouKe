@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lzk.moushimouke.View.Activity.RepostActivity">
+
+    <include layout="@layout/activity__edit_action_bar"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/repost_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:met_maxCharacters="600"
+        app:met_hideUnderline="true"
+        android:layout_margin="15dp"
+        android:hint="@string/introduce_the_photo"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/colorLightGrey"
+        >
+
+        <ImageView
+            android:id="@+id/repost_post_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/repost_post_description"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:maxLines="2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+</LinearLayout>

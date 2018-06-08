@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    >
+    <include layout="@layout/activity__edit_action_bar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edit_video_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_hideUnderline="true"
+                android:hint="@string/introduce_the_photo"
+                app:met_maxCharacters="200"
+                android:maxLength="200"
+                android:layout_margin="5dp"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/edit_video_add"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_add_photo"/>
+                <cn.jzvd.JZVideoPlayerStandard
+                    android:id="@+id/edit_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp">
+                </cn.jzvd.JZVideoPlayerStandard>
+                <ImageView
+                    android:id="@+id/edit_video_delete"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_delete"/>
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

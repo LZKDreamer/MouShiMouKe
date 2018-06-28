@@ -49,6 +49,7 @@ import com.lzk.moushimouke.R;
 import com.lzk.moushimouke.View.Activity.EditPhotoActivity;
 import com.lzk.moushimouke.View.Activity.EditTextActivity;
 import com.lzk.moushimouke.View.Activity.EditVideoActivity;
+import com.lzk.moushimouke.View.CustomView.SmartMenu;
 import com.lzk.moushimouke.View.Interface.IExploreItem;
 import com.zrq.divider.Divider;
 
@@ -90,21 +91,24 @@ public class ExploreFragment extends Fragment implements IExploreItem {
     public static final int TYPE_FIRST_REFRESH = 11;//第一次进入时
 
 
-    @BindView(R.id.explore_floating_menu)
-    FloatingActionsMenu mExploreFloatingMenu;
+   /* @BindView(R.id.explore_floating_menu)
+    FloatingActionsMenu mExploreFloatingMenu;*/
     @BindView(R.id.state_layout_loading)
     SpinKitView mStateLayoutLoading;
-    @BindView(R.id.explore_fab_camera)
+   /* @BindView(R.id.explore_fab_camera)
     FloatingActionButton mExploreFabCamera;
     @BindView(R.id.explore_fab_gallery)
     FloatingActionButton mExploreFabGallery;
     @BindView(R.id.explore_fab_video)
-    FloatingActionButton mExploreFabVideo;
+    FloatingActionButton mExploreFabVideo;*/
+    @BindView(R.id.explore_smart_menu)
+    SmartMenu mSmartMenu;
     Unbinder unbinder;
     @BindView(R.id.explore_recycler_view)
     RecyclerView mExploreRecyclerView;
     @BindView(R.id.explore_swipe_refresh_layout)
     SuperSwipeRefreshLayout mExploreSwipeRefreshLayout;
+
 
     private ExploreItemAdapter adapter;
     private GetTimeUtils mTimeUtils;
@@ -154,6 +158,32 @@ public class ExploreFragment extends Fragment implements IExploreItem {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentManager = getFragmentManager();
+        mSmartMenu.setOnSmartMenuClickListener(new SmartMenu.OnSmartMenuItemClickListener() {
+            @Override
+            public void onTextClicked() {
+                startEditText();
+            }
+
+            @Override
+            public void onGalleryClicked() {
+                if (ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, GALLERY_REQUEST_CODE);
+                } else {
+                    openGallery();
+                }
+            }
+
+            @Override
+            public void onVideoClicked() {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, VIDEO_REQUEST_CODE);
+                } else {
+                    startVideo();
+                }
+            }
+        });
     }
 
     @Override
@@ -235,7 +265,7 @@ public class ExploreFragment extends Fragment implements IExploreItem {
                                 break;
                             case HANDLER_ERROR_LOAD_MORE:
                                 mExploreSwipeRefreshLayout.setLoadMore(false);
-                                createSnackBar(mExploreFloatingMenu, getResources().getString(R.string.no_more));
+                                createSnackBar(mSmartMenu, getResources().getString(R.string.no_more));
                                 break;
                         }
                     }
@@ -262,7 +292,7 @@ public class ExploreFragment extends Fragment implements IExploreItem {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.explore_fab_camera, R.id.explore_fab_gallery, R.id.explore_fab_video})
+    /*@OnClick({R.id.explore_fab_camera, R.id.explore_fab_gallery, R.id.explore_fab_video})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.explore_fab_camera:
@@ -285,7 +315,9 @@ public class ExploreFragment extends Fragment implements IExploreItem {
                 }
                 break;
         }
-    }
+    }*/
+
+
 
 
     @Override
@@ -327,14 +359,14 @@ public class ExploreFragment extends Fragment implements IExploreItem {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     openGallery();
                 } else {
-                    createSnackBar(mExploreFabCamera, getResources().getString(R.string.permission_denied_prompt));
+                    createSnackBar(mSmartMenu, getResources().getString(R.string.permission_denied_prompt));
                 }
                 break;
             case VIDEO_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     startVideo();
                 } else {
-                    createSnackBar(mExploreFabCamera, getResources().getString(R.string.permission_denied_prompt));
+                    createSnackBar(mSmartMenu, getResources().getString(R.string.permission_denied_prompt));
                 }
                 break;
         }
@@ -382,7 +414,7 @@ public class ExploreFragment extends Fragment implements IExploreItem {
             dataList.clear();
             mPresenter.requestPostData(page, limit, type);
         } else {
-            Snackbar.make(mExploreFloatingMenu, getResources().getString(R.string.network_error), Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(mSmartMenu, getResources().getString(R.string.network_error), Snackbar.LENGTH_INDEFINITE)
                     .setAction(getResources().getString(R.string.try_again), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

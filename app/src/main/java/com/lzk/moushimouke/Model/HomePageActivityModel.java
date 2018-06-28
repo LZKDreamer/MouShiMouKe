@@ -7,6 +7,7 @@ import com.lzk.moushimouke.Model.Bean.MyUser;
 import com.lzk.moushimouke.Model.Bean.Post;
 import com.lzk.moushimouke.View.Interface.IHomePageActivityPresenterCallBack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -65,8 +66,17 @@ public class HomePageActivityModel {
 
     public void requestCurUserImageData(MyUser user,IHomePageActivityPresenterCallBack presenterCallBack){
         mPresenterCallBack=presenterCallBack;
+        BmobQuery<Post> query0=new BmobQuery<>();
+        query0.addWhereEqualTo("mUser",user);
+
+        BmobQuery<Post> query1=new BmobQuery<>();
+        query1.addWhereEqualTo("type",1);
+
+        List<BmobQuery<Post>> queries=new ArrayList<>();
+        queries.add(query0);
+        queries.add(query1);
         BmobQuery<Post> query=new BmobQuery<>();
-        query.addWhereEqualTo("mUser",user);
+        query.and(queries);
         query.include("mUser");
         query.order("-createdAt");
         query.findObjects(new FindListener<Post>() {

@@ -21,42 +21,13 @@
             />
         </com.github.nuptboyzhb.lib.SuperSwipeRefreshLayout>
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/explore_floating_menu"
+    <com.lzk.moushimouke.View.CustomView.SmartMenu
+        android:id="@+id/explore_smart_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:fab_addButtonSize="normal"
-        app:fab_addButtonColorNormal="@color/color_blue"
-        app:fab_addButtonPlusIconColor="@color/colorWhite"
-        android:layout_marginBottom="20dp"
-        app:fab_addButtonColorPressed="@color/color_blue_pressed"
-        >
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/explore_fab_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_fab_video"
-            app:fab_colorNormal="@color/color_blue"
-            app:fab_colorPressed="@color/color_blue_pressed"
-            app:fab_size="normal"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/explore_fab_gallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_fab_gallery"
-            app:fab_colorNormal="@color/color_blue"
-            app:fab_colorPressed="@color/color_blue_pressed"
-            app:fab_size="normal"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/explore_fab_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_text"
-            app:fab_colorNormal="@color/color_blue"
-            app:fab_colorPressed="@color/color_blue_pressed"
-            app:fab_size="normal"/>
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"/>
+
 
 
 </android.support.design.widget.CoordinatorLayout>

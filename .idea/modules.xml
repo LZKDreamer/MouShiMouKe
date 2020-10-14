@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MouShiMouKe.iml" filepath="$PROJECT_DIR$/MouShiMouKe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MouShiMouKe-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MouShiMouKe-app.iml" group="MouShiMouKe/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyProjects-MouShiMouKe.iml" filepath="$PROJECT_DIR$/.idea/modules/MyProjects-MouShiMouKe.iml" group="MouShiMouKe" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

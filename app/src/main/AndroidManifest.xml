@@ -44,6 +44,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.lzk.moushimouke.BmobContentProvider">
+        </provider>
 
         <activity
             android:name=".View.Activity.MainActivity"

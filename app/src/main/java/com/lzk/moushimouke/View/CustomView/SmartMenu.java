@@ -14,8 +14,6 @@ import android.widget.RelativeLayout;
 
 import com.lzk.moushimouke.R;
 
-import cn.bmob.v3.b.V;
-
 /**
  * Created by huqun on 2018/6/28.
  */

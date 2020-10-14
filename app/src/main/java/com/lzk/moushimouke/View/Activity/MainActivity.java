@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     FrameLayout mMainTabFragmentContainer;
     @BindView(R.id.main_bnb)
     BottomNavigationBar mMainBnb;
-    private String applicationId = "c1a39592447a430217b2cb3124065ee2";
     private ExploreFragment mExploreFragment;
     private HomeFragment mHomeFragment;
     private MeFragment mMeFragment;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bmob.initialize(this, applicationId);
         MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
         sMainActivity=this;
         if (myUser == null) {

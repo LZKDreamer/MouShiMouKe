@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.lzk.moushimouke"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,6 +22,11 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
     useLibrary 'org.apache.http.legacy'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 
@@ -35,18 +40,23 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'cn.bmob.android:bmob-sdk:3.5.7'
+    implementation 'cn.bmob.android:bmob-sdk:3.7.8'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.8"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.squareup.okio:okio:2.2.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
-    compile 'com.getbase:floatingactionbutton:1.10.1'
-    compile 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile 'cn.jzvd:jiaozivideoplayer:6.2.9'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.9'
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
-    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     compile('com.ray:divider:0.0.1', { exclude group: 'com.android.support' })
-    compile 'com.github.nuptboyzhb.lib.uikit:superswiperefreshlayout:1.0.0'
-    compile 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.github.nuptboyzhb.lib.uikit:superswiperefreshlayout:1.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
